@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZuuDevs - Dart Learning Roadmap</title>
+    
+    <!-- Tailwind CSS (via CDN biar kamu gak perlu install npm) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Config Tailwind biar warnanya sama persis kayak desain React aku -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 selection:bg-blue-500/30 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-2">
+                <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 font-bold text-white shadow-lg shadow-blue-500/20">
+                    D
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-white">
+                    Zuu<span class="text-blue-500">Devs</span>
+                </h1>
+            </div>
+            <nav class="hidden items-center gap-6 text-sm font-medium sm:flex">
+                <a href="#" class="text-blue-400 transition hover:text-blue-300">Kurikulum</a>
+                <a href="#" class="text-slate-400 transition hover:text-slate-200">Tentang</a>
+                <div class="h-8 w-[1px] bg-slate-700"></div>
+                <span class="text-slate-400">Halo, <span class="text-white">Rara</span></span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden bg-slate-900 pb-12 pt-16 lg:pb-16 lg:pt-20">
+        <!-- Background Glow Effect -->
+        <div class="absolute top-0 left-1/2 -ml-[40rem] w-[80rem] opacity-20 blur-3xl overflow-visible pointer-events-none">
+           <div class="aspect-[1108/632] w-full bg-gradient-to-r from-blue-600 to-cyan-400 opacity-30" style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"></div>
+        </div>
+
+        <div class="relative mx-auto max-w-4xl px-6 text-center">
+            <span class="mb-4 inline-block rounded-full bg-blue-500/10 px-4 py-1.5 text-sm font-semibold text-blue-400 border border-blue-500/20">
+                Roadmap Pembelajaran
+            </span>
+            <h2 class="mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+                Kuasai <span class="text-blue-500">Dart</span> & OOP
+            </h2>
+            <p class="mx-auto mb-8 max-w-2xl text-lg text-slate-400">
+                Panduan lengkap dari dasar sintaks hingga konsep Object-Oriented Programming (OOP) dan Asynchronous yang mendalam.
+            </p>
+            
+            <!-- Stats -->
+            <div class="flex items-center justify-center gap-6">
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-white">12</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-wide">Sesi</span>
+                </div>
+                <div class="h-10 w-[1px] bg-slate-800"></div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-white">Beginner</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-wide">Level</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Curriculum) -->
+    <main class="mx-auto max-w-3xl px-6 pb-20 flex-grow w-full">
+        <div class="mb-8 flex items-end justify-between border-b border-slate-800 pb-4">
+            <div>
+                <h3 class="text-xl font-bold text-white">Silabus Kelas</h3>
+                <p class="text-sm text-slate-500">Klik topik untuk melihat detail materi</p>
+            </div>
+        </div>
+
+        <!-- Container for Curriculum Items (Generated by JS) -->
+        <div id="curriculum-container" class="space-y-4">
+            <!-- Items will be injected here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900 py-10 text-center mt-auto">
+        <p class="text-slate-500">
+            Dibuat dengan <span class="text-red-500">❤</span> (dan sedikit ngomel) oleh Zuu.
+        </p>
+        <p class="mt-2 text-xs text-slate-600">
+            © 2025 ZuuDevs Learning Platform. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Kurikulum (Sama seperti versi React)
+        const curriculum = [
+            {
+                title: "Fondasi Dart & Setup",
+                goal: "Menyiapkan lingkungan, memahami sintaks dasar, variabel, tipe data, & Null Safety.",
+                topics: ["Instalasi Dart SDK & VS Code", "Struktur program: main()", "Variabel: var, final, const", "Tipe Data: int, double, String, bool", "Null Safety (?, !, late)"],
+                icon: "terminal",
+				path: "P1/index.html"
+            },
+            {
+                title: "Operators & Input/Output",
+                goal: "Menggunakan operator dan membuat program interaktif.",
+                topics: ["Operator Aritmatika & Logika", "Input: stdin.readLineSync()", "Output ke konsol"],
+                icon: "code",
+				path: "P2/index.html"
+            },
+            {
+                title: "Control Flow & Looping",
+                goal: "Mengontrol alur eksekusi program.",
+                topics: ["Percabangan: if, else, switch", "Perulangan: for, while, do-while", "break & continue"],
+                icon: "workflow", // mapped manually later
+				path: "P3/index.html"
+            },
+            {
+                title: "Functions Basic - Advanced",
+                goal: "Membuat dan menggunakan fungsi secara efektif.",
+                topics: ["Return type & Parameter", "Arrow function (=>)", "Anonymous Functions", "Higher-Order Functions"],
+                icon: "zap",
+				path: "P4/index.html"
+            },
+            {
+                title: "Collections (List, Set, Map)",
+                goal: "Mengelola sekumpulan data menggunakan koleksi.",
+                topics: ["List (Array)", "Set (Unik)", "Map (Key-Value)", "Iterasi Collections"],
+                icon: "database",
+				path: "P5/index.html"
+            },
+            {
+                title: "Error Handling",
+                goal: "Menangani runtime error agar aplikasi robust.",
+                topics: ["Try, Catch, Finally", "Exception vs Error", "Custom Exceptions"],
+                icon: "alert-triangle",
+				path: "P6/index.html"
+            },
+            {
+                title: "OOP 1: Class & Object",
+                goal: "Memahami paradigma OOP, Class, dan Object.",
+                topics: ["Konsep OOP", "Class Blueprint", "Fields & Methods", "Instansiasi Objek"],
+                icon: "box",
+				path: "P7/index.html"
+            },
+            {
+                title: "OOP 2: Constructor & Encapsulation",
+                goal: "Inisialisasi objek dan proteksi data.",
+                topics: ["Constructor (Default, Named)", "Enkapsulasi (Private _)", "Getter & Setter"],
+                icon: "layers",
+				path: "P8/index.html"
+            },
+            {
+                title: "OOP 3: Inheritance & Polymorphism",
+                goal: "Pewarisan sifat dan konsep banyak bentuk.",
+                topics: ["Extends & Super", "Override", "Polimorfisme"],
+                icon: "git-branch", // workflow replacement
+				path: "P9/index.html"
+            },
+            {
+                title: "OOP 4: Abstract & Interface",
+                goal: "Merancang kontrak kerja antar kelas.",
+                topics: ["Abstract Class", "Implements (Interface)", "Extends vs Implements"],
+                icon: "book-open",
+				path: "P10/index.html"
+            },
+            {
+                title: "OOP 5: Mixin",
+                goal: "Reuse code tanpa pewarisan hirarkis.",
+                topics: ["Konsep Mixin", "Keyword 'with'", "Studi Kasus Mixin"],
+                icon: "cpu",
+				path: "P11/index.html"
+            },
+            {
+                title: "Asynchronous: Future, Async, Await",
+                goal: "Menangani operasi yang butuh waktu (non-blocking).",
+                topics: ["Sync vs Async", "Future Object", "Async & Await", "Error Handling Async"],
+                icon: "zap",
+				path: "P12/index.html"
+            }
+        ];
+
+        // Function to render the list
+        function renderCurriculum() {
+            const container = document.getElementById('curriculum-container');
+            
+            curriculum.forEach((item, index) => {
+                // Create Item Container
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "mb-4 overflow-hidden rounded-xl border border-slate-700 bg-slate-800/50 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 group";
+                
+                // --- Header Button ---
+                const button = document.createElement('button');
+                button.className = "flex w-full items-center justify-between p-5 text-left transition-colors text-slate-200 hover:bg-slate-800/80";
+                button.onclick = () => toggleItem(index);
+
+                // Button Content
+                button.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="icon-box flex h-10 w-10 items-center justify-center rounded-lg bg-slate-700 text-slate-400 group-hover:bg-slate-700/80 transition-colors">
+                            <i data-lucide="${item.icon}" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Sesi ${index + 1}</span>
+                            <h3 class="text-lg font-semibold group-hover:text-blue-400 transition-colors">${item.title}</h3>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 transition-transform duration-300 transform" id="arrow-${index}"></i>
+                `;
+
+                // --- Content Area (Hidden by default) ---
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `content-${index}`;
+                contentDiv.className = "hidden border-t border-slate-700 bg-slate-900/50 p-6 animate-fade-in";
+                
+                // Topics HTML Generation
+                const topicsHtml = item.topics.map(topic => `
+                    <li class="flex items-start gap-2 text-slate-300">
+                        <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500"></span>
+                        <span class="text-sm">${topic}</span>
+                    </li>
+                `).join('');
+
+                contentDiv.innerHTML = `
+                    <div class="mb-4 rounded-lg bg-blue-500/10 p-3 text-sm text-blue-300 border border-blue-500/20">
+                        <strong>Tujuan:</strong> ${item.goal}
+                    </div>
+                    <h4 class="mb-2 text-sm font-semibold uppercase text-slate-400">Materi Pembelajaran:</h4>
+                    <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        ${topicsHtml}
+                    </ul>
+                    <div class="mt-6 flex justify-end">
+                        <button href="${item.path}" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-500 active:scale-95">
+                            Mulai Belajar
+                        </button>
+                    </div>
+                `;
+
+                itemDiv.appendChild(button);
+                itemDiv.appendChild(contentDiv);
+                container.appendChild(itemDiv);
+            });
+
+            // Re-initialize icons after injection
+            lucide.createIcons();
+        }
+
+        // Toggle Function
+        function toggleItem(index) {
+            const content = document.getElementById(`content-${index}`);
+            const arrow = document.getElementById(`arrow-${index}`);
+            const allContents = document.querySelectorAll('[id^="content-"]');
+            const allArrows = document.querySelectorAll('[id^="arrow-"]');
+            
+            const isCurrentlyOpen = !content.classList.contains('hidden');
+
+            // Close all first (Accordion style)
+            allContents.forEach(el => el.classList.add('hidden'));
+            allArrows.forEach(el => el.classList.remove('rotate-180'));
+
+            // If it wasn't open, open it now
+            if (!isCurrentlyOpen) {
+                content.classList.remove('hidden');
+                arrow.classList.add('rotate-180');
+            }
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', renderCurriculum);
+
+    </script>
+</body>
+</html>

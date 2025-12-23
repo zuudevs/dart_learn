@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 1: Fondasi Dart - ZuuDevs</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Config biar senada sama Dashboard -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        code: {
+                            bg: '#1e1e1e',
+                            text: '#d4d4d4',
+                            keyword: '#569cd6',
+                            string: '#ce9178',
+                            comment: '#6a9955',
+                            func: '#dcdcaa',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        pre { font-family: 'Fira Code', monospace; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 selection:bg-blue-500/30 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-4">
+                <a href="../../index.html" class="flex items-center justify-center rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </a>
+                <div class="h-6 w-[1px] bg-slate-700"></div>
+                <h1 class="text-lg font-bold tracking-tight text-white">
+                    Sesi 1: <span class="text-blue-500">Fondasi Dart</span>
+                </h1>
+            </div>
+            <div class="text-sm font-medium text-slate-400 hidden sm:block">
+                Zuu<span class="text-blue-500">Devs</span> Learning
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Wrapper -->
+    <main class="mx-auto w-full max-w-4xl px-6 py-10 flex-grow">
+        
+        <!-- Intro Section -->
+        <section class="mb-12 text-center">
+            <span class="mb-4 inline-block rounded-full bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-400 border border-blue-500/20">
+                Mulai Dari Sini
+            </span>
+            <h2 class="mb-4 text-3xl font-extrabold text-white sm:text-4xl">Setup, Sintaks, & Tipe Data</h2>
+            <p class="text-lg text-slate-400">Langkah pertama kamu menjadi Dart Developer yang handal (kalau belajarnya bener).</p>
+        </section>
+
+        <!-- 1. Setup -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-400">
+                    <i data-lucide="monitor" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">1. Setup Lingkungan & VS Code</h3>
+            </div>
+            
+            <div class="prose prose-invert max-w-none text-slate-300">
+                <p class="mb-4">Langkah pertama adalah menginstal Dart SDK dan menyiapkan editor kode. Jangan pakai Notepad ya, please. Kita pakai <strong>Visual Studio Code (VS Code)</strong>.</p>
+                <ul class="space-y-2 list-none pl-0">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="mt-1 w-5 h-5 text-green-500 shrink-0"></i>
+                        <span><strong>Instal Dart SDK:</strong> Unduh dari situs resmi Dart sesuai OS kamu.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="mt-1 w-5 h-5 text-green-500 shrink-0"></i>
+                        <span><strong>Instal VS Code:</strong> Editor sejuta umat, ringan dan powerful.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="mt-1 w-5 h-5 text-green-500 shrink-0"></i>
+                        <span><strong>Ekstensi Dart:</strong> Wajib install extension <strong>Dart</strong> di VS Code biar coding-nya enak (ada <i>syntax highlighting</i> & <i>debugging</i>).</span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- 2. Struktur Program -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600/20 text-purple-400">
+                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">2. Struktur Program: Fungsi main()</h3>
+            </div>
+            
+            <p class="mb-4 text-slate-300">Setiap aplikasi Dart butuh pintu masuk. Pintu itu namanya fungsi <code>main()</code>. Tanpa ini, kodinganmu nggak bakal jalan.</p>
+            
+            <!-- Code Block -->
+            <div class="overflow-hidden rounded-lg border border-slate-700 bg-[#1e1e1e] shadow-xl">
+                <div class="flex items-center gap-2 border-b border-slate-700 bg-[#2d2d2d] px-4 py-2">
+                    <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                    <span class="ml-2 text-xs text-slate-400">main.dart</span>
+                </div>
+                <div class="p-4 overflow-x-auto">
+<pre class="text-sm leading-relaxed text-[#d4d4d4]">
+<span class="text-[#6a9955]">// Ini adalah titik masuk program Dart</span>
+<span class="text-[#569cd6]">void</span> <span class="text-[#dcdcaa]">main</span>() {
+  <span class="text-[#6a9955]">// Kode kita akan ditulis di sini</span>
+  <span class="text-[#dcdcaa]">print</span>(<span class="text-[#ce9178]">'Hello, World!'</span>);
+}
+</pre>
+                </div>
+            </div>
+            <p class="mt-4 text-sm text-slate-400">Fungsi <code>print()</code> itu buat nampilin teks ke konsol. Sederhana kan?</p>
+        </article>
+
+        <!-- 3. Sintaks & Komentar -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-pink-600/20 text-pink-400">
+                    <i data-lucide="hash" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">3. Sintaks Dasar & Komentar</h3>
+            </div>
+            
+            <p class="mb-4 text-slate-300">Mirip Java atau C++. Jangan lupa titik koma (<code>;</code>) di akhir baris atau programmu bakal error (dan kamu bakal nangis).</p>
+            
+             <div class="overflow-hidden rounded-lg border border-slate-700 bg-[#1e1e1e] shadow-xl">
+                <div class="flex items-center gap-2 border-b border-slate-700 bg-[#2d2d2d] px-4 py-2">
+                    <span class="text-xs text-slate-400">comments.dart</span>
+                </div>
+                <div class="p-4 overflow-x-auto">
+<pre class="text-sm leading-relaxed text-[#d4d4d4]">
+<span class="text-[#6a9955]">// Ini komentar satu baris.</span>
+
+<span class="text-[#6a9955]">/*
+  Ini komentar multi-baris.
+  Bisa panjang banget...
+*/</span>
+
+<span class="text-[#6a9955]">/// Ini komentar dokumentasi (biasanya buat fungsi).</span>
+<span class="text-[#569cd6]">void</span> <span class="text-[#dcdcaa]">myFunction</span>() {
+  <span class="text-[#6a9955]">// ...</span>
+}
+</pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. Variabel -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-600/20 text-yellow-400">
+                    <i data-lucide="box" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">4. Variabel: var, final, const</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="rounded-lg bg-slate-700/50 p-4 border border-slate-600">
+                    <code class="text-blue-400 font-bold">var</code>
+                    <p class="text-sm text-slate-300 mt-2">Otomatis nebak tipe data. Sekali jadi String, selamanya String.</p>
+                </div>
+                <div class="rounded-lg bg-slate-700/50 p-4 border border-slate-600">
+                    <code class="text-purple-400 font-bold">final</code>
+                    <p class="text-sm text-slate-300 mt-2">Cuma bisa diisi sekali. Kayak janji suci pernikahan.</p>
+                </div>
+                <div class="rounded-lg bg-slate-700/50 p-4 border border-slate-600">
+                    <code class="text-orange-400 font-bold">const</code>
+                    <p class="text-sm text-slate-300 mt-2">Konstan sejak kompilasi. Nilainya harus fix sebelum program jalan.</p>
+                </div>
+            </div>
+
+            <div class="overflow-hidden rounded-lg border border-slate-700 bg-[#1e1e1e] shadow-xl">
+                 <div class="flex items-center gap-2 border-b border-slate-700 bg-[#2d2d2d] px-4 py-2">
+                    <span class="text-xs text-slate-400">variable.dart</span>
+                </div>
+                <div class="p-4 overflow-x-auto">
+<pre class="text-sm leading-relaxed text-[#d4d4d4]">
+<span class="text-[#569cd6]">void</span> <span class="text-[#dcdcaa]">main</span>() {
+  <span class="text-[#6a9955]">// var: Tipe data 'nama' otomatis jadi String</span>
+  <span class="text-[#569cd6]">var</span> nama = <span class="text-[#ce9178]">'Rara'</span>;
+  
+  <span class="text-[#6a9955]">// final: Gak bisa diubah lagi</span>
+  <span class="text-[#569cd6]">final</span> <span class="text-[#569cd6]">String</span> pekerjaan = <span class="text-[#ce9178]">'Programmer'</span>;
+  <span class="text-[#6a9955]">// pekerjaan = 'Chef'; // Error!</span>
+
+  <span class="text-[#6a9955]">// const: Nilai tetap abadi</span>
+  <span class="text-[#569cd6]">const</span> <span class="text-[#569cd6]">double</span> pi = <span class="text-[#b5cea8]">3.14</span>;
+}
+</pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. Tipe Data -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-600/20 text-cyan-400">
+                    <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">5. Tipe Data Dasar</h3>
+            </div>
+            
+            <p class="mb-4 text-slate-300">Dart itu <i>Strong Typed</i>, jadi dia galak soal tipe data. Ini yang sering dipakai:</p>
+            <ul class="grid grid-cols-2 gap-4 mb-6 text-sm">
+                <li class="bg-slate-900/50 p-3 rounded border border-slate-700"><code class="text-blue-400">int</code> : Bilangan bulat (1, 2, 100)</li>
+                <li class="bg-slate-900/50 p-3 rounded border border-slate-700"><code class="text-blue-400">double</code> : Desimal (3.14, 2.5)</li>
+                <li class="bg-slate-900/50 p-3 rounded border border-slate-700"><code class="text-blue-400">String</code> : Teks ('Halo')</li>
+                <li class="bg-slate-900/50 p-3 rounded border border-slate-700"><code class="text-blue-400">bool</code> : true / false</li>
+            </ul>
+
+            <div class="overflow-hidden rounded-lg border border-slate-700 bg-[#1e1e1e] shadow-xl">
+                 <div class="flex items-center gap-2 border-b border-slate-700 bg-[#2d2d2d] px-4 py-2">
+                    <span class="text-xs text-slate-400">datatypes.dart</span>
+                </div>
+                <div class="p-4 overflow-x-auto">
+<pre class="text-sm leading-relaxed text-[#d4d4d4]">
+<span class="text-[#569cd6]">void</span> <span class="text-[#dcdcaa]">main</span>() {
+  <span class="text-[#569cd6]">int</span> umur = <span class="text-[#b5cea8]">20</span>;
+  <span class="text-[#569cd6]">double</span> tinggi = <span class="text-[#b5cea8]">165.5</span>;
+  <span class="text-[#569cd6]">String</span> hobi = <span class="text-[#ce9178]">'Coding C++'</span>;
+  <span class="text-[#569cd6]">bool</span> isLapar = <span class="text-[#569cd6]">true</span>;
+
+  <span class="text-[#6a9955]">// String interpolation ($) buat gabungin variabel</span>
+  <span class="text-[#dcdcaa]">print</span>(<span class="text-[#ce9178]">'Hobi: $hobi, Lapar: $isLapar'</span>);
+}
+</pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- 6. Null Safety -->
+        <article class="mb-10 rounded-2xl border border-slate-700 bg-slate-800/50 p-6 md:p-8 backdrop-blur-sm border-l-4 border-l-red-500">
+            <div class="mb-6 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-600/20 text-red-400">
+                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">6. Null Safety (PENTING!)</h3>
+            </div>
+            
+            <p class="mb-4 text-slate-300">Dart modern itu anti-null. Variabel gak boleh kosong (<code>null</code>) kecuali kamu bolehin secara eksplisit.</p>
+            
+            <ul class="space-y-3 mb-6 text-slate-300">
+                <li class="flex items-start gap-2">
+                    <span class="text-red-400 font-bold">?</span>
+                    <span><strong>Nullable:</strong> <code>String?</code> artinya boleh berisi teks, boleh juga <code>null</code>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-red-400 font-bold">!</span>
+                    <span><strong>Bang Operator:</strong> "Gue yakin ini gak null!". Kalau ternyata null, aplikasimu <i>crash</i>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-red-400 font-bold">late</span>
+                    <span><strong>Late:</strong> "Nanti gue isi, sumpah". Kalau dipake sebelum diisi, error.</span>
+                </li>
+            </ul>
+
+            <div class="overflow-hidden rounded-lg border border-slate-700 bg-[#1e1e1e] shadow-xl">
+                 <div class="flex items-center gap-2 border-b border-slate-700 bg-[#2d2d2d] px-4 py-2">
+                    <span class="text-xs text-slate-400">null_safety.dart</span>
+                </div>
+                <div class="p-4 overflow-x-auto">
+<pre class="text-sm leading-relaxed text-[#d4d4d4]">
+<span class="text-[#569cd6]">void</span> <span class="text-[#dcdcaa]">main</span>() {
+  <span class="text-[#569cd6]">String</span>? alamat; <span class="text-[#6a9955]">// Boleh null</span>
+  <span class="text-[#dcdcaa]">print</span>(alamat);  <span class="text-[#6a9955]">// Output: null</span>
+
+  <span class="text-[#569cd6]">String</span> kota = <span class="text-[#ce9178]">'Bandung'</span>; 
+  <span class="text-[#6a9955]">// kota = null; // Error! Gak boleh null</span>
+
+  <span class="text-[#6a9955]">// Pakai ! kalau yakin ada isinya</span>
+  <span class="text-[#dcdcaa]">print</span>(kota.<span class="text-[#dcdcaa]">length</span>);
+}
+</pre>
+                </div>
+            </div>
+        </article>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between items-center mt-12 pt-8 border-t border-slate-800">
+            <a href="../../index.html" class="flex items-center gap-2 px-6 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Kembali ke Dashboard</span>
+            </a>
+            <button class="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20">
+                <span>Lanjut: Sesi 2</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900 py-8 text-center mt-auto">
+        <p class="text-slate-500 text-sm">
+            Materi ZuuDevs &copy; 2025. Jangan lupa ngopi biar gak pusing.
+        </p>
+    </footer>
+
+    <!-- Script buat Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
